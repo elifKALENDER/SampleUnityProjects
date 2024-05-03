@@ -7,14 +7,20 @@ using TMPro;
 
 public class gameSceneSwitcher : MonoBehaviour
 {
-    public GameObject loseUI;
+    public GameObject loseUI;    
+    public GameObject mainUI;    
     public int score;
     //public TextMeshPro scoreText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI inGameScoreText;  
+    
+
 
     void Start()
     {
-        loseUI.SetActive(false);
+        //SceneSwitcher();
+        loseUI.SetActive(false);              
+        
     }
 
     // Update is called once per frame
@@ -22,18 +28,25 @@ public class gameSceneSwitcher : MonoBehaviour
     {
         loseUI.SetActive(true);
         scoreText.text= "SCORE : " + score;
+        inGameScoreText.gameObject.SetActive(false);
     }
-
+    
     public void AddScore(int pointValue) {
 
         score += pointValue;
-        scoreText.text = "SCORE : " + score;
+        inGameScoreText.text = "SCORE : " + score;
     }
 
     public void StartApp() {
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // içinde bulunduðumuz sahneyi tekrar yüklemek için kullanýlan bir method
+
+        SceneManager.LoadScene(1);//SceneManager.GetActiveScene().name); // içinde bulunduðumuz sahneyi tekrar yüklemek için kullanýlan bir method
     }
+    //public void SceneSwitcher() {
+    //    if (loseUI == null) {
+    //        mainUI.SetActive(false);
+    //        SceneManager.LoadScene(1);
+    //    }
+    //}
 
     public void AppQuit() {
 
