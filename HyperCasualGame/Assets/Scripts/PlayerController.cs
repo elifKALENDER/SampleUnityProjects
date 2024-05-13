@@ -89,7 +89,17 @@ public class PlayerController : MonoBehaviour
             this.gameObject.SetActive(false);
             gameManager.LevelEnd();
         }
+    }
 
+    private void OnTriggerEnter(Collider other) {
+
+        if (other.CompareTag("EndTrigger"))
+        {
+            gameManager.WinLevel();
+            PlayerStop();
+            this.gameObject.SetActive(false);
+        }
+            
 
     }
 }

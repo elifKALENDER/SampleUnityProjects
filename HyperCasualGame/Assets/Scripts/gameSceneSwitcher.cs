@@ -8,10 +8,12 @@ using TMPro;
 public class gameSceneSwitcher : MonoBehaviour
 {
     public GameObject loseUI;    
-    public GameObject mainUI;    
+    public GameObject winUI;    
+    //public GameObject mainUI;    
     public int score;
     //public TextMeshPro scoreText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText1;
     public TextMeshProUGUI inGameScoreText;  
     
 
@@ -20,6 +22,7 @@ public class gameSceneSwitcher : MonoBehaviour
     {
         //SceneSwitcher();
         loseUI.SetActive(false);              
+        winUI.SetActive(false);              
         
     }
 
@@ -30,11 +33,23 @@ public class gameSceneSwitcher : MonoBehaviour
         scoreText.text= "SCORE : " + score;
         inGameScoreText.gameObject.SetActive(false);
     }
-    
+
+    public void WinLevel() {
+
+        winUI.SetActive(true);
+        scoreText1.text = "SCORE : " + score;
+        inGameScoreText.gameObject.SetActive(false);
+        //loseUI.SetActive(false);
+    }
+
+    public void NextLevel() {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void AddScore(int pointValue) {
 
         score += pointValue;
-        inGameScoreText.text = "SCORE : " + score;
+        inGameScoreText.text = "SCORE : " + score; 
     }
 
     public void StartApp() {

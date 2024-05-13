@@ -6,6 +6,7 @@ public class Artifacts : MonoBehaviour
 {
     public int minScore,maxScore;
     private gameSceneSwitcher gameManager;
+    public ParticleSystem collectEffect;
 
     void Start()
     {
@@ -20,7 +21,8 @@ public class Artifacts : MonoBehaviour
         if(other.CompareTag("Player")) {
 
             gameManager.AddScore(Random.Range(minScore, maxScore));
-            Destroy(gameObject);
+            collectEffect.Play();
+            Destroy(gameObject,0.5f);
         }
         
 
